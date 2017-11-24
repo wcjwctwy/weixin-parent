@@ -6,11 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="weixin-parent" />
+        <module name="weixin-common" />
+        <module name="weixin-manage-web" />
+        <module name="weixin-material-option" />
+        <module name="weixni-spring-boot-starter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="weixin-common" target="1.8" />
+      <module name="weixin-manage-web" target="1.8" />
+      <module name="weixin-material-option" target="1.8" />
       <module name="weixin-parent" target="1.8" />
+      <module name="weixni-spring-boot-starter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/weixin-common/weixin-common.iml" filepath="$PROJECT_DIR$/weixin-common/weixin-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" filepath="$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-material-option/weixin-material-option.iml" filepath="$PROJECT_DIR$/weixin-material-option/weixin-material-option.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-parent.iml" filepath="$PROJECT_DIR$/weixin-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" filepath="$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" />
     </modules>
   </component>
 </project>
