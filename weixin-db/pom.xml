@@ -10,18 +10,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sf80.weixin</groupId>
-    <artifactId>weixin-manage-web</artifactId>
+    <artifactId>weixin-material-option</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <dependencies>
-        <dependency>
-            <groupId>cn.sf80.weixin</groupId>
-            <artifactId>weixni-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.sf80.weixin</groupId>
-            <artifactId>weixin-db-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>weixin-db-dao</module>
+        <module>weixin-db-interface</module>
+        <module>weixin-db-service</module>
+        <module>weixin-db-pojo</module>
+    </modules>
+
+
 </project>

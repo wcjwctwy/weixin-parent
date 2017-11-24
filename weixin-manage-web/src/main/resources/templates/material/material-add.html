@@ -5,9 +5,14 @@
 <div class="modal-body">
     <form role="form" id="material-add-form" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="access_token">接口凭证</label>
-            <input type="text" class="form-control" id="access_token" name="access_token"
-                   placeholder="请输入access_token"/>
+            <label for="urlType">素材类型</label>
+            <select class="form-control" id="urlType" name="urlType">
+                <option value=""></option>
+                <option value="tmp">临时文件</option>
+                <option value="imageEver">永久图片</option>
+                <option value="newsEver">永久图文</option>
+                <option value="othersEver">其他永久</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="type">文件类型</label>
@@ -23,32 +28,34 @@
             <label for="inputfile">文件输入</label>
             <input type="file" id="inputfile" name="media"/>
         </div>
-        <button type="button" id="material-add-submit" class="btn btn-default">提交</button>
+        <button type="submit" id="material-add-submit" class="btn btn-default">提交</button>
     </form>
 
     <script type="text/javascript" src="/js/jquery.form.min.js"></script>
     <script>
-        $(document).on('click', '#material-add-submit', function () {
-            var options = {
-                // 规定把请求发送到那个URL
-                url: "https://api.weixin.qq.com/cgi-bin/media/uploadimg",
-//                url: "http://file.api.weixin.qq.com/cgi-bin/media/upload",
-                // 请求方式
-                type: "post",
-                // 服务器响应的数据类型
-                dataType: "json",
-                // 请求成功时执行的回调函数
-                success: function(data) {
-                    // 图片显示地址
-                    alert(data);
-                },
-                error: function(data) {
-                    // 图片显示地址
-                    alert(JSON.stringify(data));
-                }
-            };
-            $('#material-add-form').ajaxSubmit(options);
-        })
+
+//        $('#material-add-submit').on('click',  function () {
+
+
+            $('#material-add-form').submit(function() {
+                var options = {
+                    // 规定把请求发送到那个URL
+//                url: "https://api.weixin.qq.com/cgi-bin/media/uploadimg",
+                    url: "material/material-add",
+                    // 请求方式
+                    type: "post", //必须用post
+                    // 请求成功时执行的回调函数
+                    success: function(data) {
+                        // 图片显示地址
+                        alert(JSON.stringify(data));
+                    }
+                };
+                $("#material-add-form").ajaxSubmit(options);
+                $("#material-add-form").resetForm();
+                return false
+            })
+
+//        })
     </script>
 
 </div>
