@@ -2279,4 +2279,12 @@ a.list-group-item.active > .badge,
     }
 }
 
-
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    display: table; }
+th,td {
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}

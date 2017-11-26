@@ -3,13 +3,13 @@
     <li><a href="#">Typography</a></li>
     <li class="active">Data</li>
 </ol>
-<h4 class="page-title">素材</h4>
+<h4 class="page-title">卡券管理</h4>
 
 <div class="block-area" id="tableStriped">
     <div>
-    <h3 class="block-title">素材列表</h3>
-        <button type="button" data-remote="/material/material-add.html" data-toggle="modal" data-backdrop="static"
-                data-target="#material" style="float: right" class="btn btn-default">添加素材
+        <h3 class="block-title">卡券列表</h3>
+        <button type="button" data-remote="/card/card-add.html" data-toggle="modal" data-backdrop="static"
+                data-target="#card" style="float: right" class="btn btn-default">添加卡券
         </button>
     </div>
     <div class="table-responsive overflow">
@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th>编号</th>
-                <th>素材ID</th>
+                <th>卡券ID</th>
                 <th>素材URL</th>
                 <th>状态</th>
                 <th>类型</th>
@@ -34,10 +34,10 @@
 </div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="material" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="card" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 100%">
         <div class="modal-content" style="width: 50%;margin: auto"/>
     </div><!-- /.modal -->
 </div>
-<script src="/js/weixin/material.js"></script>
+<script src="/js/weixin/card.js"></script>
 

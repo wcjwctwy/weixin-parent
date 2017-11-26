@@ -44,8 +44,8 @@ public class WxTokenServiceImpl implements WxTokenService {
         //查询数据库
         SqlCondition sqlCondition = new SqlCondition("wx_token");
         sqlCondition.addCondition("appid",wxToken.getAppid(),"=",true);
-        String format = DateFormatUtils.format(wxToken.getExpTime(), "yyyy-MM-dd HH:mm:ss");
-        sqlCondition.addCondition("exp_time",format,"<",true);
+        String format = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+        sqlCondition.addCondition("exp_time",format,">",true);
         sqlCondition.addCondition("token_type",wxToken.getTokenType(),"=",true);
         List<WxToken> wxTokens = wxTokenDao.getWxToken(sqlCondition);
         if(wxTokens==null||wxTokens.size()==0){

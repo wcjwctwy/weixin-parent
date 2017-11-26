@@ -1,0 +1,176 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">添加卡券</h4>
+</div>
+<div class="modal-body">
+    <form role="form" id="card-add-form" enctype="multipart/form-data">
+        <!--卡券类型-->
+        <div class="form-group">
+            <label for="card_type" class="col-sm-2" control-label="">卡券类型</label>
+            <div class="col-sm-10">
+            <select class="form-control" id="card_type" name="card_type">
+                <option value=""></option>
+                <option value="GROUPON">团购券</option>
+                <option value="CASH">代金券</option>
+                <option value="DISCOUNT">折扣券</option>
+                <option value="GIFT">礼品券</option>
+                <option value="GENERAL_COUPON">优惠券</option>
+            </select>
+            </div>
+        </div>
+        <div class="card_type_extend"></div>
+        <!--卡券的商户logo-->
+        <div class="form-group">
+            <label for="logo_url" class="col-sm-2 control-label">卡券的商户logo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="logo_url" id="logo_url" placeholder="卡券的商户logoUrl可在素材中添加 建议像素为300*300。"/>
+            </div>
+        </div>
+        <!--码型-->
+        <div class="form-group">
+            <label for="code_type" class="col-sm-2" control-label="">码型</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="code_type" name="code_type">
+                    <option value=""></option>
+                    <option value="CODE_TYPE_TEXT">文本</option>
+                    <option value="CODE_TYPE_BARCODE">一维码</option>
+                    <option value="CODE_TYPE_QRCODE">二维码</option>
+                    <option value="CODE_TYPE_ONLY_QRCODE">二维码无code显示</option>
+                    <option value="CODE_TYPE_ONLY_BARCODE">一维码无code显示</option>
+                    <option value="CODE_TYPE_NONE">不显示code和条形码类型</option>
+                </select>
+            </div>
+        </div>
+        <!--商户名字-->
+        <div class="form-group">
+            <label for="brand_name" class="col-sm-2 control-label">商户名字</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="brand_name" id="brand_name" placeholder="商户名字,字数上限为12个汉字。"/>
+            </div>
+        </div>
+        <!--卡券名-->
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">卡券名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" id="title" placeholder="卡券名，字数上限为9个汉字。(建议涵盖卡券属性、服务及金额)。"/>
+            </div>
+        </div>
+
+        <!--券颜色-->
+        <div class="form-group">
+            <label for="color" class="col-sm-2" control-label="">券颜色</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="color" name="color">
+                    <option value=""></option>
+                    <option value="Color010" style="background-color: #63b359">Color010</option>
+                    <option value="Color020" style="background-color: #2c9f67">Color020</option>
+                    <option value="Color030" style="background-color: #509fc9">Color030</option>
+                    <option value="Color040" style="background-color: #5885cf">Color040</option>
+                    <option value="Color050" style="background-color: #9062c0">Color050</option>
+                    <option value="Color060" style="background-color: #d09a45">Color060</option>
+                    <option value="Color070" style="background-color: #e4b138">Color070</option>
+                    <option value="Color080" style="background-color: #ee903c">Color080</option>
+                    <option value="Color081" style="background-color: #f08500">Color081</option>
+                    <option value="Color082" style="background-color: #a9d92d">Color082</option>
+                    <option value="Color090" style="background-color: #dd6549">Color090</option>
+                    <option value="Color100" style="background-color: #cc463d">Color100</option>
+                    <option value="Color101" style="background-color: #cf3e36">Color101</option>
+                    <option value="Color102" style="background-color: #5E6671">Color102</option>
+                </select>
+            </div>
+        </div>
+        <!--卡券使用提醒-->
+        <div class="form-group">
+            <label for="notice" class="col-sm-2 control-label">卡券使用提醒</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="notice" id="notice" placeholder="卡券使用提醒，字数上限为16个汉字。"/>
+            </div>
+        </div>
+
+        <!--使用时间的类型-->
+        <div class="form-group">
+            <label for="type" class="col-sm-2" control-label="">时间的类型</label>
+            <div class="col-sm-10">
+                <select class="form-control dataType" id="type" name="type">
+                    <option value=""></option>
+                    <option value="DATE_TYPE_FIX_TIME_RANGE">固定日期区间类型</option>
+                    <option value="DATE_TYPE_FIX_TERM">固定时长类型</option>
+                </select>
+            </div>
+        </div>
+        <div class="dataType-sub"></div>
+
+        <!--客服电话-->
+        <div class="form-group">
+            <label for="service_phone" class="col-sm-2 control-label">客服电话</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="service_phone" id="service_phone" placeholder="客服电话。"/>
+            </div>
+        </div>
+
+        <!--卡券是否支持全部门店-->
+        <div class="form-group">
+            <label for="use_all_locations" class="col-sm-2 control-label">支持门店类型</label>
+            <div class="col-sm-10">
+                <select class="form-control all-locations" id="use_all_locations" name="use_all_locations">
+                    <option value=""></option>
+                    <option value="true">全部</option>
+                    <option value="false">指定门店</option>
+                </select>
+            </div>
+        </div>
+        <div class="location_id_list"></div>
+
+        <!--卡券库存的数量-->
+        <div class="form-group">
+            <label for="quantity" class="col-sm-2 control-label">卡券库存</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="卡券库存的数量，上限为100000000。"/>
+            </div>
+        </div>
+
+        <!--每人可领券的数量限制-->
+        <div class="form-group">
+            <label for="get_limit" class="col-sm-2 control-label">领券数量限制</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="get_limit" id="get_limit" placeholder="每人可领券的数量限制,不填写默认为50。"/>
+            </div>
+        </div>
+        <!--每人可核销的数量限制-->
+        <div class="form-group">
+            <label for="use_limit" class="col-sm-2 control-label">使用数量限制</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="use_limit" id="use_limit" placeholder="每人可核销的数量限制,不填写默认为50。"/>
+            </div>
+        </div>
+
+        <!--卡券是否可转赠。-->
+        <div class="form-group">
+            <label for="can_give_friend" class="col-sm-2 control-label">是否可转赠</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="can_give_friend" name="can_give_friend">
+                    <option value=""></option>
+                    <option value="true">可以</option>
+                    <option value="false">不可以</option>
+                </select>
+            </div>
+        </div>
+
+        <!--卡券领取页面是否可分享-->
+        <div class="form-group">
+            <label for="can_share" class="col-sm-2 control-label">是否可分享</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="can_share" name="can_share">
+                    <option value=""></option>
+                    <option value="true">可以</option>
+                    <option value="false">不可以</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" id="card-add-submit" class="btn btn-default">提交</button>
+    </form>
+
+    <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="/js/weixin/card-add.js"></script>
+
+</div>
