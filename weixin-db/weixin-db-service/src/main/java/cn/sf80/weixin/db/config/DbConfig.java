@@ -4,6 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("file:/usr/weixin/config/db.propertise")
+@PropertySource("file:/usr/weixin/config/db.properties")
 public class DbConfig {
 }
