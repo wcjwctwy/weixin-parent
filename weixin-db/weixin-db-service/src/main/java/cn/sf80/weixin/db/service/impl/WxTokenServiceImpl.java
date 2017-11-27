@@ -24,7 +24,7 @@ public class WxTokenServiceImpl implements WxTokenService {
     @Autowired
     private WxTokenDao wxTokenDao;
 
-    @Override
+
     public void saveToken(WxToken wxToken) {
         SqlCondition sqlCondition = new SqlCondition(wxToken);
         wxTokenDao.saveToken(sqlCondition);
@@ -32,7 +32,7 @@ public class WxTokenServiceImpl implements WxTokenService {
 
 
 
-    @Override
+
     public WxToken getInterfaceUseToken(String appid,String secret,Integer expires) {
         //先查询数据库是否有token
         WxToken wxToken = new WxToken();

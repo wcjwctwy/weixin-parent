@@ -1,0 +1,64 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">添加卡券</h4>
+</div>
+<div class="modal-body">
+    <form role="form" id="card-qrcode-form">
+        <!--卡券二维码领取类型-->
+        <div class="form-group">
+            <label for="action_name" class="col-sm-2" control-label="">领取类型</label>
+            <div class="col-sm-10">
+            <select class="form-control" id="action_name" name="action_name">
+                <option value=""></option>
+                <option value="QR_CARD">领取单张</option>
+                <option value="QR_MULTIPLE_CARD">领取多张</option>
+            </select>
+            </div>
+        </div>
+        <!--二维码有效期-->
+        <div class="form-group">
+            <label for="expire_seconds" class="col-sm-2 control-label">二维码有效期</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="expire_seconds" id="expire_seconds" placeholder="指定二维码的有效时间，范围是60 ~ 1800秒。不填默认为365天有效"/>
+            </div>
+        </div>
+
+
+        <!--二维码有效期-->
+        <div class="form-group">
+            <label for="is_unique_code" class="col-sm-2" control-label="">是否可以重复扫描</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="is_unique_code" name="is_unique_code">
+                    <option value=""></option>
+                    <option value="false">不可以</option>
+                    <option value="true">可以</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" id="card-add-submit" class="btn btn-default">提交</button>
+    </form>
+
+    <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+    <script type="text/javascript">
+        $('#card-qrcode-form').submit(function () {
+            // alert(JSON.stringify(values, null, 2));
+            var options = {
+                // 规定把请求发送到那个URL
+                url: "card/card-qrcode",
+                // 请求方式
+                type: "post", //必须用post
+                // 请求成功时执行的回调函数
+                success: function(data) {
+                    // 图片显示地址
+                    alert(data.data.card_id);
+                }
+            };
+            $("#card-qrcode-form").ajaxSubmit(options);
+            $("#card-qrcode-form").resetForm();
+            return false
+        });
+
+    </script>
+
+</div>

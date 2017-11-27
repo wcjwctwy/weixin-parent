@@ -29,6 +29,20 @@ public class SqlProvider {
         return stringSql;
     }
 
+    public String update(TableSql sqlCondition) throws Exception{
+        SQL sql = new SQL();
+        sql.UPDATE(sqlCondition.getTableName());
+        sqlCondition.getAnd().forEach((k,v)->sql.SET(k+"="+v));
+        Map<String, String> condition = sqlCondition.getCondition();
+        if(condition!=null&&condition.size()>0){
+            condition.forEach((k,v)->sql.WHERE(k+v));
+        }
+        String stringSql = sql.toString();
+        LOGGER.info("update sql:"+stringSql);
+        return stringSql;
+    }
+
+
     public String select(TableSql tableSql)throws Exception{
         SQL sql = new SQL();
         List<String> selectCols = tableSql.getSelectCols();
