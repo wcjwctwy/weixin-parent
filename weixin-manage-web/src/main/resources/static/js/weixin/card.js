@@ -30,7 +30,7 @@ function cardHtml(data) {
             +'<td><a target="_blank" href="'+v.showQrcodeUrl+'">'+v.showQrcodeUrl+'</a></td>'
             +'<td>'+v.createdTime+'</td>'
             +'<td>'+v.updatedTime+'</td>'
-            +'<td><a href="javascript:void(0)" class="card-showQrcode block-title">扫码生成</a>&emsp;<a href="javascript:void(0)" class="card-del block-title">删除</a></td>';
+            +'<td><a href="javascript:void(0)" data-remote="/card/qrcode" data-toggle="modal" data-backdrop="static" data-target="#card">扫码生成</a>&emsp;<a href="javascript:void(0)" class="card-del block-title">删除</a></td>';
         htmlData+='</tr>'
     });
     return htmlData;

@@ -33,7 +33,7 @@ public class WxCardinfoServiceImpl implements WxCardinfoService {
 
     public void update(WxCardinfo wxCardinfo) {
         SqlCondition sqlCondition = new SqlCondition(wxCardinfo);
-        sqlCondition.addCondition("id",wxCardinfo.getId()+"","=",false);
+        sqlCondition.addCondition("card_id",wxCardinfo.getCardId()+"","=",false);
         wxCardinfoDao.update(sqlCondition);
     }
 }

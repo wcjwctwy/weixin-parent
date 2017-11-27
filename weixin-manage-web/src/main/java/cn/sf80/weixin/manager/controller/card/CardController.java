@@ -109,11 +109,12 @@ public class CardController {
     }
     @GetMapping("/card/qrcode")
     public String qrcode(){
-        return "card/qrcode";
+        return "card/card-qrcode";
     }
 
     @PostMapping("/card/qrcode")
-    public String getqrcode(String action_name,Integer expire_seconds,String card_id ,boolean is_unique_code){
+    @ResponseBody
+    public WeixinResult getqrcode(String action_name,Integer expire_seconds,String card_id ,boolean is_unique_code){
         if(StringUtils.isEmpty(action_name)){
             action_name="QR_CARD";
         }
@@ -126,6 +127,23 @@ public class CardController {
         action_info.put("card",card);
         card.put("card_id",card_id);
         card.put("is_unique_code",is_unique_code);
-        return "card/qrcode";
+
+        String appid = wxPlatformConfig.getAppid();
+        WxToken interfaceUseToken = wxTokenService.getInterfaceUseToken(appid, wxPlatformConfig.getAppsecret(), 7200);
+        String url = wxUrlCard.getQrcode()+"?access_token="+interfaceUseToken.getAccessToken();
+        String post = HttpsUtil.httpsRequestToString(url, "POST", JSON.toJSONString(qrcodeRequest));
+
+        JSONObject jsonObject = JSON.parseObject(post);
+        int errcode = jsonObject.getInteger("errcode");
+        if(errcode!=0){
+           throw new RuntimeException(jsonObject.getString("errmsg"));
+        }
+        WxCardinfo wxCardinfo = new WxCardinfo();
+        wxCardinfo.setCardId(card_id);
+        wxCardinfo.setTicket(jsonObject.getString("ticket"));
+        wxCardinfo.setUrl(jsonObject.getString("url"));
+        wxCardinfo.setShowQrcodeUrl(jsonObject.getString("show_qrcode_url"));
+        wxCardinfoService.update(wxCardinfo);
+        return WeixinResult.ok();
     }
 }
