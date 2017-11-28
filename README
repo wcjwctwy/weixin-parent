@@ -25,7 +25,9 @@ wx.url.card.create=https://api.weixin.qq.com/card/create
 #创建卡券一/二维码
 wx.url.card.qrcode=https://api.weixin.qq.com/card/qrcode/create
 #获取卡券信息
-wx.url.card.get=https://api.weixin.qq.com/card/code/get
+wx.url.card.get=https://api.weixin.qq.com/card/get
+#获取用户领取的Code信息
+wx.url.card.getCode=https://api.weixin.qq.com/card/code/get
 #核销卡券
 wx.url.card.consume=https://api.weixin.qq.com/card/code/consume
 ==========================================================
