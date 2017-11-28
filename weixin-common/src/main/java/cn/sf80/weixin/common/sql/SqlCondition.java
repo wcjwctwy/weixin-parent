@@ -108,8 +108,8 @@ public class SqlCondition implements TableSql {
     }
 
     @Override
-    public List<String> addOrderCol(String col) throws Exception {
-        if(!StringUtils.isEmpty(orders)){
+    public List<String> addOrderCol(String col) {
+        if(StringUtils.isEmpty(orders)){
             orders=new ArrayList<>();
         }
         orders.add(col);
@@ -118,7 +118,7 @@ public class SqlCondition implements TableSql {
 
     @Override
     public List<String> addSelectCol(String col) throws Exception {
-        if(!StringUtils.isEmpty(selectCols)){
+        if(StringUtils.isEmpty(selectCols)){
             selectCols =new ArrayList<>();
         }
         selectCols.add(col);

@@ -25,18 +25,40 @@ function cardHtml(data) {
         htmlData+='<tr>'
             +'<td>'+v.id+'</td>'
             +'<td>'+v.cardId+'</td>'
+            +'<td>'+v.title+'</td>'
+            +'<td>'+v.brandName+'</td>'
             +'<td>'+v.ticket+'</td>'
             +'<td><a target="_blank" href="'+v.url+'">'+v.url+'</a></td>'
             +'<td><a target="_blank" href="'+v.showQrcodeUrl+'">'+v.showQrcodeUrl+'</a></td>'
+            +'<td>'+v.description+'</td>'
             +'<td>'+v.createdTime+'</td>'
             +'<td>'+v.updatedTime+'</td>'
-            +'<td><a href="javascript:void(0)" data-remote="/card/qrcode" data-toggle="modal" data-backdrop="static" data-target="#card">扫码生成</a>&emsp;<a href="javascript:void(0)" class="card-del block-title">删除</a></td>';
+            +'<td><a href="javascript:void(0)" data-remote="/card/qrcode" data-toggle="modal" class="qrcode-create block-title" data-backdrop="static" data-target="#card">扫码生成</a>' +
+            '&emsp;<a href="javascript:void(0)" class="card-detail block-title">查看</a>' +
+            '&emsp;<a href="javascript:void(0)" class="card-del block-title">删除</a>' +
+            '</td>';
         htmlData+='</tr>'
     });
     return htmlData;
 }
 
-$('#myModalLabel').on('show.bs.modal', function () {
-    var card_id = $(this).parent("td").siblings().eq(1).text()
-    alert(card_id);
+var card_id;
+$(document).on('click','.qrcode-create',function () {
+     card_id = $(this).parent("td").siblings().eq(1).text();
 });
+
+$(document).on('click','.card-detail',function () {
+    var card_id = $(this).parent("td").siblings().eq(1).text();
+    $.ajax({
+        url:'/card/card-get?card_id='+card_id,
+        type:'GET',
+        success:function (data) {
+            if(data.status==200){
+                alert(JSON.stringify(data.data,null,2))
+            }else{
+                alert(data.msg)
+            }
+        }
+    })
+});
+

@@ -58,7 +58,11 @@ $('#card-add-form').submit(function () {
                    // 请求成功时执行的回调函数
                    success: function(data) {
                        // 图片显示地址
-                       alert(data.data.card_id);
+                       if(data.status==200){
+                           alert("卡券添加成功！！")
+                       }else{
+                           alert("卡券添加失败信息\n"+data.msg)
+                       }
                    }
                };
                $("#card-add-form").ajaxSubmit(options);

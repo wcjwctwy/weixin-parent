@@ -9,18 +9,34 @@
     <div>
         <h3 class="block-title">卡券列表</h3>
         <button type="button" data-remote="/card/card-add.html" data-toggle="modal" data-backdrop="static"
-                data-target="#card" style="float: right" class="btn btn-default">添加卡券
+                data-target="#card" style="float: right" class="btn btn-default"><span class="icon">&#61943;</span>添加卡券
         </button>
     </div>
     <div class="table-responsive overflow">
         <table class="tile table table-bordered table-striped">
+            <colgroup>
+                <col width="3%"/>
+                <col width="5%"/>
+                <col width="8%"/>
+                <col width="8%"/>
+                <col width="8%"/>
+                <col width="8%"/>
+                <col width="8%"/>
+                <col width="23%"/>
+                <col width="8%"/>
+                <col width="8%"/>
+                <col />
+            </colgroup>
             <thead>
             <tr>
                 <th>编号</th>
                 <th>卡券ID</th>
+                <th>标题</th>
+                <th>BrandName</th>
                 <th>ticket</th>
                 <th>url</th>
                 <th>一/二维码展示地址</th>
+                <th>描述</th>
                 <th>创建时间</th>
                 <th>更新时间</th>
                 <th>操作</th>

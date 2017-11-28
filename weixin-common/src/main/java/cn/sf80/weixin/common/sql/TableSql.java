@@ -7,7 +7,7 @@ public interface TableSql {
      String getTableName() throws Exception;
      List<String> addSelectCol(String col) throws Exception;
      List<String> addGroupCol(String col) throws Exception;
-     List<String> addOrderCol(String col) throws Exception;
+     List<String> addOrderCol(String col);
      void addCondition(String col, String colValue, String sym, boolean quote);
      Map<String, String> getCondition();
      Long getLimit() throws Exception;

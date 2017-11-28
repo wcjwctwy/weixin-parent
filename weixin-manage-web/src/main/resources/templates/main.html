@@ -6,3 +6,49 @@
 </ol>
 <h4 class="page-title">管理主页</h4>
 <hr class="whiter"/>
+
+<!--卡券的核销-->
+<form role="form" id="code-check-consume">
+    <div class="form-group">
+        <label for="code" class="col-sm-2 control-label">卡券的code</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="code" id="code" placeholder="请输入卡券的code"/>
+        </div>
+    </div>
+    <!--核销code前查询code-->
+    <div class="form-group">
+        <label for="check_consume" class="col-sm-2 control-label">消费前检查</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="check_consume" name="check_consume">
+                <option value=""></option>
+                <option value="true">检查</option>
+                <option value="false">不检查</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-default">提交</button>
+</form>
+<script type="text/javascript">
+        $('#code-check-consume').submit(function () {
+            alert("dd")
+            var options = {
+                // 规定把请求发送到那个URL
+                url: "card/code/consume",
+                // 请求方式
+                type: "post",
+                // 请求成功时执行的回调函数
+                success: function(data) {
+                    // 图片显示地址
+                    if(data.status==200){
+                        alert("卡券消费成功！！")
+                    }else{
+                        alert("卡券消费失败信息\n"+data.msg)
+                    }
+                }
+            };
+            $("#code-check-consume").ajaxSubmit(options);
+            $("#code-check-consume").resetForm();
+            return false
+        });
+
+</script>

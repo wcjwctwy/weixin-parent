@@ -9,7 +9,16 @@ public class WxUrlCard {
     private String qrcode;
 
     private String get;
+    private String getCode;
     private String consume;
+
+    public String getGetCode() {
+        return getCode;
+    }
+
+    public void setGetCode(String getCode) {
+        this.getCode = getCode;
+    }
 
     public String getCreate() {
         return create;

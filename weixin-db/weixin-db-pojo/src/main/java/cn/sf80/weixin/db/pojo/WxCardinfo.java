@@ -13,10 +13,37 @@ public class WxCardinfo implements Serializable {
     private String ticket;
     private String url;
     private String showQrcodeUrl;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:dd:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:dd:ss",timezone = "GMT+8")
     private Date createdTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:dd:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:dd:ss",timezone = "GMT+8")
     private Date updatedTime;
+    private String title;
+    private String brandName;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
 
     public Long getId() {
         return id;

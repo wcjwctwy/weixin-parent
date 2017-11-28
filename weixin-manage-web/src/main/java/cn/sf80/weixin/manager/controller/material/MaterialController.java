@@ -98,15 +98,6 @@ public class MaterialController {
     @GetMapping("material/material-list")
     @ResponseBody
     public WeixinResult materialList(Integer offset, Integer count, WxMaterial wxMaterial) {
-//        WxToken interfaceUseToken = wxTokenService.getInterfaceUseToken(wxPlatformConfig.getAppid(), wxPlatformConfig.getAppsecret(), 7200);
-//        String url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=" + interfaceUseToken.getAccessToken();
-//        Map<String, Object> data = new HashMap<>();
-//        data.put("offset", offset);
-//        data.put("count", count);
-//        data.put("type", type);
-//        String body = JSON.toJSONString(data);
-//        LOGGER.info("body==>" + body);
-//        String post = HttpsUtil.httpsRequestToString(url, "POST", body);
         String appid = wxPlatformConfig.getAppid();
         wxMaterial.setAppid(appid);
         List<WxMaterial> wxMaterials = wxMaterialService.getMaterial(wxMaterial, offset, count);

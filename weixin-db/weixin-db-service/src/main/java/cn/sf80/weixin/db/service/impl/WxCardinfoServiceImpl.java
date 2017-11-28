@@ -22,6 +22,7 @@ public class WxCardinfoServiceImpl implements WxCardinfoService {
 
     public List<WxCardinfo> getCards(WxCardinfo wxCardinfo,Integer page,Integer rows) {
         SqlCondition sqlCondition = new SqlCondition(wxCardinfo);
+        sqlCondition.addOrderCol("updated_time desc");
         List<WxCardinfo> wxCardinfos = wxCardinfoDao.get(sqlCondition);
         return wxCardinfos;
     }
@@ -33,7 +34,7 @@ public class WxCardinfoServiceImpl implements WxCardinfoService {
 
     public void update(WxCardinfo wxCardinfo) {
         SqlCondition sqlCondition = new SqlCondition(wxCardinfo);
-        sqlCondition.addCondition("card_id",wxCardinfo.getCardId()+"","=",false);
+        sqlCondition.addCondition("card_id",wxCardinfo.getCardId()+"","=",true);
         wxCardinfoDao.update(sqlCondition);
     }
 }

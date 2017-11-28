@@ -23,7 +23,6 @@
             </div>
         </div>
 
-
         <!--二维码有效期-->
         <div class="form-group">
             <label for="is_unique_code" class="col-sm-2" control-label="">是否可以重复扫描</label>
@@ -50,11 +49,14 @@
                 type: "post", //必须用post
                 // 请求成功时执行的回调函数
                 data:{
-
+                    card_id:card_id
                 },
                 success: function(data) {
-                    // 图片显示地址
-                    alert(data.data.card_id);
+                    if(data.status==200){
+                        alert("扫码生成成功！！")
+                    }else{
+                        alert("扫码生成失败信息\n"+data.msg)
+                    }
                 }
             };
             $("#card-qrcode-form").ajaxSubmit(options);
