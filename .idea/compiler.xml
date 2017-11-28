@@ -18,10 +18,10 @@
     <bytecodeTargetLevel>
       <module name="weixin-common" target="1.8" />
       <module name="weixin-db" target="1.8" />
-      <module name="weixin-db-dao" target="1.5" />
-      <module name="weixin-db-interface" target="1.5" />
-      <module name="weixin-db-pojo" target="1.5" />
-      <module name="weixin-db-service" target="1.5" />
+      <module name="weixin-db-dao" target="1.8" />
+      <module name="weixin-db-interface" target="1.8" />
+      <module name="weixin-db-pojo" target="1.8" />
+      <module name="weixin-db-service" target="1.8" />
       <module name="weixin-manage-web" target="1.8" />
       <module name="weixin-material-option" target="1.8" />
       <module name="weixin-parent" target="1.8" />

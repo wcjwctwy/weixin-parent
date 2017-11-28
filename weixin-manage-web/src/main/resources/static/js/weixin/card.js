@@ -35,3 +35,8 @@ function cardHtml(data) {
     });
     return htmlData;
 }
+
+$('#myModalLabel').on('show.bs.modal', function () {
+    var card_id = $(this).parent("td").siblings().eq(1).text()
+    alert(card_id);
+});

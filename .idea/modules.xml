@@ -3,21 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/weixin-common/weixin-common.iml" filepath="$PROJECT_DIR$/weixin-common/weixin-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-common/weixin-common.iml" filepath="$PROJECT_DIR$/weixin-common/weixin-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-dao/weixin-db-dao.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-dao/weixin-db-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-dao/weixin-db-dao.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-dao/weixin-db-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-interface/weixin-db-interface.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-interface/weixin-db-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-interface/weixin-db-interface.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-interface/weixin-db-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-pojo/weixin-db-pojo.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-pojo/weixin-db-pojo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-pojo/weixin-db-pojo.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-pojo/weixin-db-pojo.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-service/weixin-db-service.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-service/weixin-db-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-db/weixin-db-service/weixin-db-service.iml" filepath="$PROJECT_DIR$/weixin-db/weixin-db-service/weixin-db-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" filepath="$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" filepath="$PROJECT_DIR$/weixin-manage-web/weixin-manage-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixin-parent.iml" filepath="$PROJECT_DIR$/weixin-parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" filepath="$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" filepath="$PROJECT_DIR$/weixni-spring-boot-starter/weixni-spring-boot-starter.iml" />
     </modules>
   </component>
