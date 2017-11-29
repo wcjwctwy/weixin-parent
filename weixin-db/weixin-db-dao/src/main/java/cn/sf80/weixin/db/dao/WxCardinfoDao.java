@@ -3,10 +3,7 @@ package cn.sf80.weixin.db.dao;
 import cn.sf80.weixin.common.sql.SqlProvider;
 import cn.sf80.weixin.common.sql.TableSql;
 import cn.sf80.weixin.db.pojo.WxCardinfo;
-import org.apache.ibatis.annotations.DeleteProvider;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,7 +21,7 @@ public interface WxCardinfoDao {
     @SelectProvider(type = SqlProvider.class,method = "select")
     List<WxCardinfo> get(TableSql tableSql);
 
-    @DeleteProvider(type = SqlProvider.class,method = "update")
+    @UpdateProvider(type = SqlProvider.class,method = "update")
     void update(TableSql tableSql);
 
 }

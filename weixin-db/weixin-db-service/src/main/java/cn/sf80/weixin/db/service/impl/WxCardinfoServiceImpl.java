@@ -37,4 +37,16 @@ public class WxCardinfoServiceImpl implements WxCardinfoService {
         sqlCondition.addCondition("card_id",wxCardinfo.getCardId()+"","=",true);
         wxCardinfoDao.update(sqlCondition);
     }
+
+    @Override
+    public String getTitleByCardId(String cardId) {
+        SqlCondition sqlCondition = new SqlCondition("wx_cardinfo");
+        sqlCondition.addCondition("card_id",cardId,"=",true);
+        List<WxCardinfo> wxCardinfos = wxCardinfoDao.get(sqlCondition);
+        if(wxCardinfos!=null&&wxCardinfos.size()>0) {
+            WxCardinfo wxCardinfo = wxCardinfos.get(0);
+            return wxCardinfo.getTitle();
+        }
+        return null;
+    }
 }

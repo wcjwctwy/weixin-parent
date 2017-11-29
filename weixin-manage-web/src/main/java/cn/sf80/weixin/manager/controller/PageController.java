@@ -15,4 +15,9 @@ public class PageController {
     public String main(){
         return "main";
     }
+
+    @GetMapping("/pc")
+    public String phonecheck(){
+        return "pc";
+    }
 }

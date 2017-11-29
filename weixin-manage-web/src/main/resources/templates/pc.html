@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>手机端卡券核销</title>
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport"/>
+    <link type="text/css" rel="stylesheet" href="/css/basic.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/format.css"/>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/my.css"/>
+    <!--加载样式-->
+    <script>
+        $(window).load(function () {
+            $("#status").fadeOut();
+            $("#preloader").delay(350).fadeOut("slow");
+        })
+    </script>
+</head>
+
+<body>
+<div class="w">
+    <!--header 开始-->
+    <header>
+        <div class="header"><a class="new-a-back" href="javascript:history.back();"> <span>返回</span> </a>
+            <h2>手机端卡券核销</h2>
+            <a class="new-a-jd" id="trigger-overlay" href="javascript:void(0)"> <span>导航菜单</span> </a>
+        </div>
+    </header>
+    <!--header 结束-->
+    <div class="page">
+        <div class="main">
+            <form id="code-check-consume">
+                <div class="item item-username">
+                    <input id="code" class="txt-input txt-username result-qrcode" type="text" placeholder="手动输入卡券的code" value=""
+                           name="code" />
+                    <b class="input-close" style="display: none;"></b></div>
+                <div style="width: 50%;margin: auto;">
+                    <span class="ui-btn-lg ui-btn-primary" style="background-color: black" node-type="qr-btn">扫描二维码
+                        <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码1" />
+                    </span>
+                </div>
+                <div class="ui-btn-wrap">
+                    <button type="submit" class="ui-btn-lg ui-btn-primary" style="height: 80px;">核销卡券</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="result-qrcode"></div>
+    <script src="/lib/zepto.js"></script>
+    <script src="/lib/qrcode.lib.min.js"></script>
+    <script src="/lib/qrcode.js"></script>
+    <script>
+        //初始化扫描二维码按钮，传入自定义的 node-type 属性
+        $(function() {
+            Qrcode.init($('[node-type=qr-btn]'));
+        });
+    </script>
+    <!--footer 开始-->
+    <div class="footer">
+        <nav>
+            <ul class="footer_menu">
+                <li><a href="tel:13888888888"><img src="/img/plugmenu1.png"/>
+                    <label>联系我们</label>
+                </a></li>
+                <li><a href="#"><img src="/img/plugmenu4.png"/>
+                    <label>服务中心</label>
+                </a></li>
+                <li class="home"><a href="#"></a></li>
+                <li><a href="#"><img src="/img/plugmenu3.png"/>
+                    <label>热门活动</label>
+                </a></li>
+                <li><a href="#"><img src="/img/plugmenu2.png"/>
+                    <label>搜索车辆</label>
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--footer end-->
+</div>
+<script type="text/javascript">
+    $('#code-check-consume').submit(function () {
+        var options = {
+            // 规定把请求发送到那个URL
+            url: "card/code/consume",
+            // 请求方式
+            type: "post",
+            // 请求成功时执行的回调函数
+            success: function (data) {
+                // 图片显示地址
+                if (data.status == 200) {
+                    alert("卡券[" + data.data.title + "]消费成功！！")
+                } else {
+                    alert("卡券消费失败信息\n" + data.msg)
+                }
+            }
+        };
+        $("#code-check-consume").ajaxSubmit(options);
+        $("#code-check-consume").resetForm();
+        return false
+    });
+
+
+</script>
+</body>
+</html>

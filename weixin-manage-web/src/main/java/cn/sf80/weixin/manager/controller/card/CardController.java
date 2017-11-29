@@ -203,9 +203,17 @@ public class CardController {
         return WeixinResult.ok(JSON.parseObject(post));
     }
 
+    /**
+     * 查询核销卡券
+     * 1、查看卡券有效性
+     * 2、核销卡券
+     * @param code
+     * @param check_consume
+     * @return
+     */
     @PostMapping("card/code/consume")
     @ResponseBody
-    public WeixinResult codeConsume(String code, @RequestParam(value = "check_consume", defaultValue = "false") boolean check_consume) {
+    public WeixinResult codeConsume(String code, @RequestParam(value = "check_consume", defaultValue = "true") boolean check_consume) {
 
         Map<String, Object> request = new HashMap<>();
         request.put("code", code);
@@ -240,6 +248,9 @@ public class CardController {
         if (consumeErrcode != 0) {
             return WeixinResult.build(consumeErrcode, jsonObject.getString("errmsg"));
         }
+        String card_id = consumeResponseObject.getJSONObject("card").getString("card_id");
+        String title = wxCardinfoService.getTitleByCardId(card_id);
+        consumeResponseObject.put("title",title);
         return WeixinResult.ok(consumeResponseObject);
     }
 }

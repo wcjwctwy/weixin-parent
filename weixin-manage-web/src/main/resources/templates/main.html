@@ -30,7 +30,6 @@
 </form>
 <script type="text/javascript">
         $('#code-check-consume').submit(function () {
-            alert("dd")
             var options = {
                 // 规定把请求发送到那个URL
                 url: "card/code/consume",
@@ -40,7 +39,7 @@
                 success: function(data) {
                     // 图片显示地址
                     if(data.status==200){
-                        alert("卡券消费成功！！")
+                        alert("卡券["+data.data.title+"]消费成功！！")
                     }else{
                         alert("卡券消费失败信息\n"+data.msg)
                     }
