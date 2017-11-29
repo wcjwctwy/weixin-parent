@@ -9,7 +9,7 @@ function replaceHtml(templatePath,node,method) {
     })
 }
 
-$(document).on('click','.jumpPage',function () {
+$(document).off("click").on('click','.jumpPage',function () {
 	var templatePath=$(this).children('span').eq(0).text();
     replaceHtml(templatePath,$('#childPage'),'GET');
 });

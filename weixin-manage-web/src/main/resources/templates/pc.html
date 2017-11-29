@@ -37,17 +37,18 @@
                     <b class="input-close" style="display: none;"></b></div>
                 <div style="width: 50%;margin: auto;">
                     <span class="ui-btn-lg ui-btn-primary" style="background-color: black" node-type="qr-btn">扫描二维码
-                        <input node-type="jsbridge" type="file" name="myPhoto" value="扫描二维码1" />
+                        <input node-type="jsbridge" type="file" value="扫描二维码1" />
                     </span>
                 </div>
                 <div class="ui-btn-wrap">
-                    <button type="submit" class="ui-btn-lg ui-btn-primary" style="height: 80px;">核销卡券</button>
+                    <button type="submit" class="ui-btn-lg ui-btn-primary" style="height: 80px;font-size: 50px">核销卡券</button>
                 </div>
             </form>
+            <div id="consume-result" style="font-size: 50px"></div>
         </div>
     </div>
 
-    <div class="result-qrcode"></div>
+
     <script src="/lib/zepto.js"></script>
     <script src="/lib/qrcode.lib.min.js"></script>
     <script src="/lib/qrcode.js"></script>
@@ -81,6 +82,7 @@
 </div>
 <script type="text/javascript">
     $('#code-check-consume').submit(function () {
+        $('#consume-result').empty();
         var options = {
             // 规定把请求发送到那个URL
             url: "card/code/consume",
@@ -90,9 +92,9 @@
             success: function (data) {
                 // 图片显示地址
                 if (data.status == 200) {
-                    alert("卡券[" + data.data.title + "]消费成功！！")
+                    $('#consume-result').css("color","green").text("卡券[" + data.data.title + "]消费成功！！")
                 } else {
-                    alert("卡券消费失败信息\n" + data.msg)
+                    $('#consume-result').css("color","red").text("卡券消费失败信息" + data.msg)
                 }
             }
         };

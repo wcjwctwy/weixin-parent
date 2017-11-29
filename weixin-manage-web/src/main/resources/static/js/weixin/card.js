@@ -11,6 +11,9 @@ function showCards() {
         },
         success:function (data) {
             var materials = data.data;
+            $('.qrcode-create').unbind('click');
+            $('.qrcode-detail').unbind('click');
+            $('.qrcode-del').unbind('click');
             $('#card-list').html(cardHtml(materials))
         }
     })
@@ -43,22 +46,25 @@ function cardHtml(data) {
 }
 
 var card_id;
-$(document).on('click','.qrcode-create',function () {
+$(document).off("click").on('click','.qrcode-create',function () {
+
      card_id = $(this).parent("td").siblings().eq(1).text();
 });
 
-$(document).on('click','.card-detail',function () {
-    var card_id = $(this).parent("td").siblings().eq(1).text();
-    $.ajax({
-        url:'/card/card-get?card_id='+card_id,
-        type:'GET',
-        success:function (data) {
-            if(data.status==200){
-                alert(JSON.stringify(data.data,null,2))
-            }else{
-                alert(data.msg)
+    $(document).off("click").on('click','.card-detail',function () {
+    // $('.qrcode-detail').bind('click',function () {
+        var card_id = $(this).parent("td").siblings().eq(1).text();
+        $.ajax({
+            url:'/card/card-get?card_id='+card_id,
+            type:'GET',
+            success:function (data) {
+                if(data.status==200){
+                    alert(JSON.stringify(data.data,null,2))
+                }else{
+                    alert(data.msg)
+                }
             }
-        }
-    })
-});
+        })
+    });
+
 

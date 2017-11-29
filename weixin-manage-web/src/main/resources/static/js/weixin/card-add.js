@@ -1,4 +1,4 @@
-$(document).on('change', '#card_type', function () {
+$(document).off("change").on('change', '#card_type', function () {
     var val = $(this).val();
     var card_type_extend = $('.card_type_extend');
     if (val == 'GROUPON') {
@@ -69,7 +69,7 @@ $('#card-add-form').submit(function () {
                $("#card-add-form").resetForm();
     return false
 });
-$(document).on('change', '.dataType', function () {
+$(document).off("change").on('change', '.dataType', function () {
     var val = $(this).val();
     var dataType_sub = $(".dataType-sub");
     if (val == 'DATE_TYPE_FIX_TIME_RANGE') {
@@ -112,7 +112,7 @@ $(document).on('change', '.dataType', function () {
             '        </div>')
     }
 });
-$(document).on('change', '.all-locations', function () {
+$(document).off("change").on('change', '.all-locations', function () {
     var val = $(this).val();
     if (val == 'false') {
         $('.location_id_list').html('<!--门店位置-->\n' +
