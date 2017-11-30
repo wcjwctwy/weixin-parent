@@ -3,6 +3,9 @@ server:
 spring:
   thymeleaf:
     cache: false
+  mvc:
+    favicon:
+      enabled: false
 wx:
   appid: wx8e2c0babe1547b09
   appsecret: 054e5deec01991933740a64a5a722175

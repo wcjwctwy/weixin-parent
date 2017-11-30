@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableConfigurationProperties({WxUrlMaterial.class, WxUrlCard.class})
-@PropertySource("file:/usr/weixin/config/wxurl.properties")
+@PropertySource("classpath:/config/wxurl.properties")
 public class ManagerConfig {
 
     @Bean
