@@ -5,9 +5,8 @@ import java.util.Arrays;
 
 public class CheckoutUtil
 {
-	private static final String token = "myfirstwechat"; // 改成唯一的字符串
 
-	public static boolean checkSignature(String signature, String timestamp, String nonce)
+	public static boolean checkSignature(String signature, String timestamp, String nonce,String token)
 	{
 		String[] arr = new String[]
 		{ token, timestamp, nonce };

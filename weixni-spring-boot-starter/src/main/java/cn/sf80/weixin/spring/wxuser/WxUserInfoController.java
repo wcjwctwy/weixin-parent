@@ -39,11 +39,11 @@ public class WxUserInfoController {
     @Value("${wx.login.redirectUrl}")
     private String redirectUrl;
 
-    @Value("${wx.context.path}")
+    @Value("${wx.path}")
     private String wxContextPath;
 
 //第一步：用户同意授权，获取code
-    @GetMapping("${wx.context.path}/auth")
+    @GetMapping("${wx.path}/auth")
     public String auth(){
         String url =
         UrlUtils.getWxCodeUrl(wxSpringServer.getWxPlatformConfig(),redirectUrl,UrlUtils.snsapi_userinfo,"123");
@@ -51,7 +51,7 @@ public class WxUserInfoController {
     }
 //第二步：通过code换取网页授权access_token
     //特殊的网页授权access_token,与基础支持中的access_token（该access_token用于调用其他接口）不同
-    @RequestMapping("${wx.context.path}/wxredirecturl")
+    @RequestMapping("${wx.path}/wxredirecturl")
     public String login(String code, String state, RedirectAttributes redirectAttributes){
         LOGGER.debug("code:"+code+"  state:"+state);
         String url = UrlUtils.getWebAccessTokenUrl(wxSpringServer.getWxPlatformConfig(),code);
@@ -61,7 +61,7 @@ public class WxUserInfoController {
     }
 
 //第三部获取用户信息
-    @RequestMapping("${wx.context.path}/wxUserinfo")
+    @RequestMapping("${wx.path}/wxUserinfo")
     public String getWxUserinfo(@ModelAttribute("webAccessToken")String webAccessToken){
 
         System.out.println("webAccessToken:"+webAccessToken);

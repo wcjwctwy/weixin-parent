@@ -28,6 +28,7 @@
     </div>
     <button class="btn btn-default">提交</button>
 </form>
+<hr class="whiter"/>
 <script type="text/javascript">
         $('#code-check-consume').submit(function () {
             var options = {
@@ -50,4 +51,131 @@
             return false
         });
 
+</script>
+<h4 class="page-title">主页菜单</h4>
+<hr class="whiter"/>
+<form role="form" id="index-menu">
+    <!--菜单1-->
+    <div class="form-group">
+        <label for="menu1.name" class="col-sm-2 control-label">菜单名称</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="menu1.name" id="menu1.name" placeholder="请输入菜单名称"/>
+        </div>
+    </div>
+    <!--是否有子菜单-->
+    <div class="form-group">
+        <label for="menu1.hassub" class="col-sm-2 control-label">是否有子菜单</label>
+        <div class="col-sm-10">
+            <select class="form-control hassub" id="menu1.hassub" name="menu1.hassub">
+                <option value=""></option>
+                <option value="true">有</option>
+                <option value="false">没有</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="menu1.list[0].name" class="col-sm-2 control-label">菜单名称</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="menu1.list[0].name" id="menu1.list[0].name" placeholder="请输入菜单名称"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="menu1.list[0].type" class="col-sm-2 control-label">菜单事件</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="menu1.list[0].type" name="menu1.list[0].type">
+                <option value=""></option>
+                <option value="click">点击推送事件</option>
+                <option value="view">跳转URL事件</option>
+                <option value="scancode_push">扫码推事件</option>
+                <option value="scancode_waitmsg">扫码推事件且弹出“消息接收中”提示框</option>
+                <option value="pic_sysphoto">弹出系统拍照发图</option>
+                <option value="pic_photo_or_album">弹出系统拍照和照片发图</option>
+                <option value="pic_weixin">弹出微信相册发图器</option>
+                <option value="location_select">弹出地理位置选择器</option>
+                <option value="media_id">下发消息</option>
+                <option value="view_limited">跳转图文消息UR</option>
+                <option value="miniprogram">小程序</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="menu1.list[0].url" class="col-sm-2 control-label">菜单内容</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="menu1.list[0].url" id="menu1.list[0].url" placeholder="请输入菜单点击内容"/>
+        </div>
+    </div>
+
+
+    <button class="btn btn-default">提交</button>
+</form>
+
+<script type="text/javascript">
+    $('.hassub').change(function () {
+        var hassub = $(this).val();
+        var menu = $(this).attr('name').split('\.')[0];
+        if(hassub=='false'){
+            $(this).parent('div').parent('div').eq(0).after('<!--菜单事件-->\n' +
+                '    <div class="form-group">\n' +
+                '        <label for="menu1.type" class="col-sm-2 control-label">菜单事件</label>\n' +
+                '        <div class="col-sm-10">\n' +
+                '            <select class="form-control" id="menu1.type" name="menu1.type">\n' +
+                '                <option value=""></option>\n' +
+                '                <option value="click">点击推送事件</option>\n' +
+                '                <option value="view">跳转URL事件</option>\n' +
+                '                <option value="scancode_push">扫码推事件</option>\n' +
+                '                <option value="scancode_waitmsg">扫码推事件且弹出“消息接收中”提示框</option>\n' +
+                '                <option value="pic_sysphoto">弹出系统拍照发图</option>\n' +
+                '                <option value="pic_photo_or_album">弹出系统拍照和照片发图</option>\n' +
+                '                <option value="pic_weixin">弹出微信相册发图器</option>\n' +
+                '                <option value="location_select">弹出地理位置选择器</option>\n' +
+                '                <option value="media_id">下发消息</option>\n' +
+                '                <option value="view_limited">跳转图文消息UR</option>\n' +
+                '                <option value="miniprogram">小程序</option>\n' +
+                '            </select>\n' +
+                '        </div>\n' +
+                '    </div>\n' +
+                '    <div class="form-group">\n' +
+                '        <label for="menu1.url" class="col-sm-2 control-label">菜单内容</label>\n' +
+                '        <div class="col-sm-10">\n' +
+                '            <input type="text" class="form-control" name="menu1.url" id="menu1.url" placeholder="请输入菜单点击内容"/>\n' +
+                '        </div>\n' +
+                '    </div>')
+        }else if(hassub=='true'){
+            $(this).parent('div').parent('div').eq(0).after(generate_subMenu(menu,0))
+        }
+    });
+
+    function generate_subMenu(menu,i){
+        return '<div class="form-group">\n' +
+            '        <label for="'+menu+'.list['+i+'].name" class="col-sm-2 control-label">菜单名称</label>\n' +
+            '        <div class="col-sm-10">\n' +
+            '            <input type="text" class="form-control" name="'+menu+'.list['+i+'].name" id="'+menu+'.list['+i+'].name" placeholder="请输入菜单名称"/>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div class="form-group">\n' +
+            '        <label for="'+menu+'.list['+i+'].type" class="col-sm-2 control-label">菜单事件</label>\n' +
+            '        <div class="col-sm-10">\n' +
+            '            <select class="form-control" id="'+menu+'.list['+i+'].type" name="'+menu+'.list['+i+'].type">\n' +
+            '                <option value=""></option>\n' +
+            '                <option value="click">点击推送事件</option>\n' +
+            '                <option value="view">跳转URL事件</option>\n' +
+            '                <option value="scancode_push">扫码推事件</option>\n' +
+            '                <option value="scancode_waitmsg">扫码推事件且弹出“消息接收中”提示框</option>\n' +
+            '                <option value="pic_sysphoto">弹出系统拍照发图</option>\n' +
+            '                <option value="pic_photo_or_album">弹出系统拍照和照片发图</option>\n' +
+            '                <option value="pic_weixin">弹出微信相册发图器</option>\n' +
+            '                <option value="location_select">弹出地理位置选择器</option>\n' +
+            '                <option value="media_id">下发消息</option>\n' +
+            '                <option value="view_limited">跳转图文消息UR</option>\n' +
+            '                <option value="miniprogram">小程序</option>\n' +
+            '            </select>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '    <div class="form-group">\n' +
+            '        <label for="'+menu+'.list['+i+'].url" class="col-sm-2 control-label">菜单内容</label>\n' +
+            '        <div class="col-sm-10">\n' +
+            '            <input type="text" class="form-control" name="'+menu+'.list['+i+'].url" id="'+menu+'.list['+i+'].url" placeholder="请输入菜单点击内容"/>\n' +
+            '        </div>\n' +
+            '    </div>'
+    }
 </script>

@@ -1,0 +1,18 @@
+server:
+  port: 80
+spring:
+  thymeleaf:
+    cache: false
+  mvc:
+    favicon:
+      enabled: false
+wx:
+  appid: wx93e3258af48a4a75
+  appsecret: e8b6f08d9d7a9dc2fa842d1efa21dc26
+  accessToken: yangguofumalatang
+  domain: http://www.9aisf.cn
+  path: event/message
+security:
+  user:
+    password: a66634c581649cca012fceeb9007675e
+    name: user

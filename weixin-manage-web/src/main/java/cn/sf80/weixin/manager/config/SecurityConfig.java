@@ -1,6 +1,7 @@
 package cn.sf80.weixin.manager.config;
 
 import cn.sf80.weixin.common.utils.MD5Util;
+import cn.sf80.weixin.spring.pojo.WxPlatformConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private String password;
 
+    @Autowired
+    private WxPlatformConfig wxPlatformConfig;
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,13 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//配置安全策略
-                .antMatchers("/").permitAll()//定义/请求不需要验证
+                .antMatchers("/**"+wxPlatformConfig.getPath()+"/**").permitAll()//定义/请求不需要验证
                 .anyRequest().authenticated()//其余的所有请求都需要验证
                 .and()
                 .logout()
                 .permitAll()//定义logout不需要验证
                 .and()
-                .formLogin();//使用form表单登录
+                .formLogin()
+                ;//使用form表单登录
+        http.csrf().disable();
     }
 
     public String getName() {

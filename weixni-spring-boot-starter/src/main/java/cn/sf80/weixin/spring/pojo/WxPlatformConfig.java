@@ -9,6 +9,15 @@ public class WxPlatformConfig {
     private String accessToken;
     private String authSuccessUrl;
     private String domain;
+    private String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public String getDomain() {
         return domain;

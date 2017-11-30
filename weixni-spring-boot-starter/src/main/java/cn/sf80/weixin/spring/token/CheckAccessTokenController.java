@@ -1,10 +1,12 @@
 package cn.sf80.weixin.spring.token;
 
 import cn.sf80.weixin.spring.pojo.TextMessage;
+import cn.sf80.weixin.spring.pojo.WxPlatformConfig;
 import cn.sf80.weixin.spring.utils.CheckoutUtil;
 import cn.sf80.weixin.spring.utils.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,13 +21,17 @@ public class CheckAccessTokenController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckAccessTokenController.class);
 
-    @GetMapping("${wx.context.path}")
+    @Autowired
+    private WxPlatformConfig wxPlatformConfig;
+
+
+    @GetMapping("${wx.path}")
     public String check(String signature,String timestamp,String nonce,String echostr){
         LOGGER.debug("signature:"+signature);
         LOGGER.debug("timestamp:"+timestamp);
         LOGGER.debug("nonce:"+nonce);
         LOGGER.debug("echostr:"+echostr);
-        if (CheckoutUtil.checkSignature(signature, timestamp, nonce))
+        if (CheckoutUtil.checkSignature(signature, timestamp, nonce,wxPlatformConfig.getAccessToken()))
         {
             return echostr;
         }else {
@@ -33,7 +39,7 @@ public class CheckAccessTokenController {
         }
     }
 
-    @PostMapping("${wx.context.path}")
+    @PostMapping("${wx.path}")
     public String check(HttpServletRequest request){
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()){
