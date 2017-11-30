@@ -1,20 +1,18 @@
 
-function replaceHtml(templatePath,node,method) {
-    $.ajax({
-        url:templatePath,
-        type:method,
-        success:function (data) {
-            node.html(data)
-        }
-    })
-}
-
-$(document).off("click").on('click','.jumpPage',function () {
-	var templatePath=$(this).children('span').eq(0).text();
-    replaceHtml(templatePath,$('#childPage'),'GET');
-});
-
 $(document).ready(function(){
+    function replaceHtml(templatePath,node,method) {
+        $.ajax({
+            url:templatePath,
+            type:method,
+            success:function (data) {
+                node.html(data)
+            }
+        })
+    };
+    $('.jumpPage').click(function () {
+        var templatePath=$(this).children('span').eq(0).text();
+        replaceHtml(templatePath,$('#childPage'),'GET');
+    });
     replaceHtml('main',$('#childPage'),'GET');
     /* --------------------------------------------------------
 	Template Settings
