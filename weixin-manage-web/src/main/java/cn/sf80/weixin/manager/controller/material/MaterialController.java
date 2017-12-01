@@ -51,6 +51,11 @@ public class MaterialController {
         return "material/material-add";
     }
 
+    @GetMapping("material/material-add-news")
+    public String materialAddNews() {
+        return "material/material-add-news";
+    }
+
     @PostMapping("material/material-add")
     @ResponseBody
     public WeixinResult materialUpload(String urlType, String type, MultipartFile media) {
